@@ -12,3 +12,6 @@ node_modules
 
 #!.yarn/cache
 .pnp.*
+
+# OS
+.DS_Store
