@@ -1,10 +1,53 @@
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { DataSource, Repository } from "typeorm";
-import { Injectable } from "@nestjs/common";
-import { Board } from "./board.entity";
+import { Board } from "@/boards/board.entity";
+import { BoardStatus } from "@/boards/board-status.enum";
+import type { CreateBoardDto } from "@/boards/dto/create-board.dto";
 
 @Injectable()
 export class BoardRepository extends Repository<Board> {
   constructor(dataSource: DataSource) {
     super(Board, dataSource.createEntityManager());
+  }
+
+  async getAllBoards() {
+    return this.find();
+  }
+
+  async createBoard(dto: CreateBoardDto) {
+    const { title, description } = dto;
+
+    const board = this.create({
+      title,
+      description,
+      status: BoardStatus.PUBLIC,
+    });
+
+    await this.save(board);
+    return board;
+  }
+
+  async getBoardById(id: number) {
+    const found = await this.findOneBy({
+      id,
+    });
+    if (!found) {
+      throw new NotFoundException(`Can't find Board with id ${id}`);
+    }
+    return found;
+  }
+
+  async deleteBoard(id: number) {
+    const result = await this.delete(id);
+    if (result.affected === 0) {
+      throw new NotFoundException(`Can't find Board with id ${id}`);
+    }
+  }
+
+  async updateBoardStatus(id: number, status: BoardStatus) {
+    const board = await this.getBoardById(id);
+    board.status = status;
+    await this.save(board);
+    return board;
   }
 }

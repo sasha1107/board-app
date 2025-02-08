@@ -1,7 +1,7 @@
 import { IsNotEmpty } from "class-validator";
-import type { Board } from "../board.model";
+import type { Board } from "../board.entity";
 
-export class CreateBoardDto implements Pick<Board, "title" | "description"> {
+export class CreateBoardDto {
   @IsNotEmpty()
   title: Board["title"];
 
