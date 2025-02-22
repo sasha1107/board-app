@@ -1,10 +1,9 @@
 import { IsNotEmpty } from "class-validator";
-import type { Board } from "../board.entity";
 
 export class CreateBoardDto {
   @IsNotEmpty()
-  title: Board["title"];
+  title: string;
 
   @IsNotEmpty()
-  description: Board["description"];
+  description: string;
 }
