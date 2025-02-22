@@ -5,6 +5,7 @@ import { PassportModule } from "@nestjs/passport";
 import { AuthController } from "@/auth/auth.controller";
 import { AuthService } from "@/auth/auth.service";
 import { UserRepository } from "@/auth/user.repository";
+import { JwtStrategy } from "@/auth/jwt.strategy";
 
 const MINUTE = 60;
 
@@ -22,6 +23,7 @@ const MINUTE = 60;
     TypeOrmModule.forFeature([UserRepository]),
   ],
   controllers: [AuthController],
-  providers: [AuthService, UserRepository],
+  providers: [AuthService, UserRepository, JwtStrategy], // 이 모듈에서 사용할 수 있도록 등록
+  exports: [JwtStrategy, PassportModule], // 다른 모듈에서 사용할 수 있도록 내보내기
 })
 export class AuthModule {}
