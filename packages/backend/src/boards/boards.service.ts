@@ -24,8 +24,8 @@ export class BoardsService {
     return this.boardRepository.getBoardById(id);
   }
 
-  deleteBoard(id: number) {
-    return this.boardRepository.deleteBoard(id);
+  deleteBoard(id: number, user: User) {
+    return this.boardRepository.deleteBoard(id, user);
   }
 
   updateBoardStatus(id: number, status: BoardStatus) {
