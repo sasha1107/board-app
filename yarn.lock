@@ -2183,6 +2183,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/config@npm:^3":
+  version: 3.3.5
+  resolution: "@types/config@npm:3.3.5"
+  checksum: 10c0/32f57d8bd8a6bd79d29a7f26f945b537f745dbadc33cd8eaad98f6e466e0175fb90ae37952352fa6509a0f5de212b9bd0af320bc3bb5f8579af6affe5e3410f6
+  languageName: node
+  linkType: hard
+
 "@types/connect@npm:*":
   version: 3.4.38
   resolution: "@types/connect@npm:3.4.38"
@@ -3314,6 +3321,7 @@ __metadata:
     "@nestjs/typeorm": "npm:^11.0.0"
     "@swc/cli": "npm:^0.6.0"
     "@swc/core": "npm:^1.10.7"
+    "@types/config": "npm:^3"
     "@types/express": "npm:^5.0.0"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.7"
@@ -3324,6 +3332,7 @@ __metadata:
     bcryptjs: "npm:^3.0.2"
     class-transformer: "npm:^0.5.1"
     class-validator: "npm:^0.14.1"
+    config: "npm:^3.3.12"
     eslint: "npm:^9.18.0"
     eslint-config-prettier: "npm:^10.0.1"
     eslint-plugin-prettier: "npm:^5.2.2"
@@ -3933,6 +3942,15 @@ __metadata:
     readable-stream: "npm:^2.2.2"
     typedarray: "npm:^0.0.6"
   checksum: 10c0/2e9864e18282946dabbccb212c5c7cec0702745e3671679eb8291812ca7fd12023f7d8cb36493942a62f770ac96a7f90009dc5c82ad69893438371720fa92617
+  languageName: node
+  linkType: hard
+
+"config@npm:^3.3.12":
+  version: 3.3.12
+  resolution: "config@npm:3.3.12"
+  dependencies:
+    json5: "npm:^2.2.3"
+  checksum: 10c0/496b3ef740754527cbc59d11df234f5be5b5f44511d14ca7fa6117fda0959ccd4cc6d8da2d94cb0dfcdf77d9d7aaaa34558d6dcce0a7860a3a8cf8a54c77b237
   languageName: node
   linkType: hard
 

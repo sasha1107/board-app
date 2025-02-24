@@ -6,8 +6,12 @@ import { AuthController } from "@/auth/auth.controller";
 import { AuthService } from "@/auth/auth.service";
 import { UserRepository } from "@/auth/user.repository";
 import { JwtStrategy } from "@/auth/jwt.strategy";
+import * as config from "config";
 
-const MINUTE = 60;
+const jwtConfig = config.get<{
+  secret: string;
+  expiresIn: number;
+}>("jwt");
 
 @Module({
   imports: [
@@ -15,9 +19,9 @@ const MINUTE = 60;
       defaultStrategy: "jwt",
     }),
     JwtModule.register({
-      secret: "Secret1234",
+      secret: process.env.JWT_SECRET || jwtConfig.secret,
       signOptions: {
-        expiresIn: MINUTE * 60,
+        expiresIn: jwtConfig.expiresIn,
       },
     }),
     TypeOrmModule.forFeature([UserRepository]),
