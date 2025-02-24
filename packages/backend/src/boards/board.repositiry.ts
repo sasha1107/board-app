@@ -3,6 +3,7 @@ import { DataSource, Repository } from "typeorm";
 import { Board } from "@/boards/board.entity";
 import { BoardStatus } from "@/boards/board-status.enum";
 import type { CreateBoardDto } from "@/boards/dto/create-board.dto";
+import type { User } from "@/auth/user.entity";
 
 @Injectable()
 export class BoardRepository extends Repository<Board> {
@@ -14,13 +15,14 @@ export class BoardRepository extends Repository<Board> {
     return this.find();
   }
 
-  async createBoard(dto: CreateBoardDto) {
+  async createBoard(dto: CreateBoardDto, user: User) {
     const { title, description } = dto;
 
     const board = this.create({
       title,
       description,
       status: BoardStatus.PUBLIC,
+      user,
     });
 
     await this.save(board);

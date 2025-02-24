@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { BoardStatus } from "@/boards/board-status.enum";
 import type { CreateBoardDto } from "@/boards/dto/create-board.dto";
 import { BoardRepository } from "@/boards/board.repositiry";
+import type { User } from "@/auth/user.entity";
 
 @Injectable()
 export class BoardsService {
@@ -15,8 +16,8 @@ export class BoardsService {
     return this.boardRepository.getAllBoards();
   }
 
-  createBoard(dto: CreateBoardDto) {
-    return this.boardRepository.createBoard(dto);
+  createBoard(dto: CreateBoardDto, user: User) {
+    return this.boardRepository.createBoard(dto, user);
   }
 
   getBoardById(id: number) {
